@@ -17,7 +17,6 @@ from app import app
 
 @app.route('/')
 def home():
-    news_data = spreadsheet_query()
     return flask.render_template('index.html')
 
 
