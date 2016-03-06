@@ -41,17 +41,24 @@ def home():
     return flask.render_template('index.html',arr=arr)
 
 @app.route('/news/<news_id>')
-def news(news_id):
+def newsPage(news_id):
     arr = spreadsheet_query()
     news_data = None
+    
+    #news_data = [news for news in arr where news['news_id'] == news_id]
+
     for news in arr:
         if news['news_id'] == news_id:
             news_data = news
 
     if not news_data:
-        return flask.render_template('404.html',news_data)
+        return flask.render_template('404.html')
     else:
-        return flask.render_template('news.html',news_data)
+        return flask.render_template('news.html',news_data=news_data)
+
+@app.route('/admin')
+def admin():
+    return flask.render_template('admin.html')
 
 
 if __name__ == '__main__':

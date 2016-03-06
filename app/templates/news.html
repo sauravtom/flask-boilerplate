@@ -17,17 +17,14 @@
 	
     
     <div class="col-md-12">
+      
+      <h1>{{news_data.title}}</h1>
+      <img src="{{news_data.image_url}}">
+      <p>{{news_data.summary}}</p>
 
-      {% for item in arr %}
-                
-            <div class="item">
-                
-                <a href="/news/{{item.news_id}}">{{item.title}}</a><br>
-                <img src="{{item.image_url}}" width="200px">
-                
-            </div>
-                
-       {% endfor %}
+      <a href="{{news_data.link}}">source</a>
+
+      
 
     </div>
     
