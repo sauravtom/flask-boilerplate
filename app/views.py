@@ -82,6 +82,12 @@ def api():
     data = spreadsheet_query()
     return jsonify(arr=data)
 
+@app.route('/api/<word>')
+def apis(word):
+    data = spreadsheet_query()
+    searched_data = [news for news in data if word in news['summary']]
+    return jsonify(arr=searched_data)
+
 if __name__ == '__main__':
     app.run(debug=True,host='0.0.0.0')
 
