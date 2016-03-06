@@ -10,8 +10,16 @@ import os
 import json
 import requests
 import hashlib
-
 from app import app
+
+from flask.ext.httpauth import HTTPBasicAuth
+
+auth = HTTPBasicAuth()
+
+users = {
+    "john": "hello",
+    "foo": "food"
+    }
 
 def get_dict(**kwargs):
     d= {}
@@ -57,6 +65,7 @@ def newsPage(news_id):
         return flask.render_template('news.html',news_data=news_data)
 
 @app.route('/admin')
+@auth.login_required
 def admin():
     return flask.render_template('admin.html')
 
