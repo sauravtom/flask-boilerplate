@@ -77,7 +77,10 @@ def newsPage(news_id):
 def admin():
     return flask.render_template('admin.html')
 
-
+@app.route('/api')
+def api():
+    data = spreadsheet_query()
+    return jsonify(arr=data)
 
 if __name__ == '__main__':
     app.run(debug=True,host='0.0.0.0')
