@@ -2,17 +2,35 @@
 
 {% block meta %}
 
+<style type="text/css">
+
+
+
+</style>
+
 {% endblock %}
 
-{% block title %}{% endblock %}
+{% block title %}FOOD{% endblock %}
 
 
 {% block content %}
-
-
+	
     
     <div class="col-md-12">
       <h1>Hi</h1>
+
+      {% for item in arr %}
+                
+            <div class="item">
+                
+                <p>{{item.title}}</p>
+                <img src="{{item.image_url}}">
+                <p>{{item.summary}}</p>
+                <!-- <button class="small inline">Delete</button> -->
+            </div>
+                
+       {% endfor %}
+
     </div>
     
     
@@ -20,5 +38,7 @@
 
 
 {% block script %}
+<script type="text/javascript">
 
+</script>
 {% endblock %}
