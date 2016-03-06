@@ -21,6 +21,13 @@ users = {
     "foo": "food"
     }
 
+@auth.get_password
+def get_pw(username):
+    if username in users:
+        return users.get(username)
+    return None
+
+
 def get_dict(**kwargs):
     d= {}
     for k,v in kwargs.iteritems():
@@ -63,6 +70,7 @@ def newsPage(news_id):
         return flask.render_template('404.html')
     else:
         return flask.render_template('news.html',news_data=news_data)
+
 
 @app.route('/admin')
 @auth.login_required
